@@ -1,7 +1,8 @@
 body{
   margin:0;
   padding:0;
-  background-color: black;
+  background-image: url('images/htmlbg.jpg');
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,4 +48,8 @@ h1{
   display: flex;
   flex-direction: row;
   margin-top: 5vh;
+}
+
+canvas{
+  display:none;
 }
