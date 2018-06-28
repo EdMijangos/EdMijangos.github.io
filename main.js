@@ -23,6 +23,19 @@ var secondBtn = document.getElementById("2p");
 var bgSound = new Audio();
 bgSound.src = 'Sound/[03] Youkai Modern Colony.mp3';
 bgSound.loop = true;
+bgSound.volume = 0.5;
+var winSound = new Audio();
+winSound.src = 'Sound/clear.wav';
+var shootSound = new Audio();
+shootSound.src ='Sound/shoot.wav';
+var enemyShoot = new Audio();
+enemyShoot.src = 'Sound/enemy_shoot.wav';
+enemyShoot.volume = 1;
+var killSound = new Audio();
+killSound.src = 'Sound/kill.wav';
+var deathSound = new Audio();
+deathSound.src = 'Sound/death.wav';
+deathSound.volume = 1;
 
 //classes
 class Board {
@@ -334,6 +347,7 @@ function checkKill(){
     if(enemies[i].isTouching(mario.bullets[j])){
       enemies.splice(i,1);
       mario.bullets.splice(j,1);
+      killSound.play();
       killcount++;
     }
   }
@@ -344,6 +358,7 @@ function checkKill(){
       if(enemies[i].isTouching(luigi.bullets[j])){
         enemies.splice(i,1);
         luigi.bullets.splice(j,1);
+        killSound.play();
         killcount++;
     }
   }
@@ -351,6 +366,7 @@ function checkKill(){
 function generateEnemyBullets(){
   if(frames%90 === 0)enemies.forEach(function(a){
     a.shoot();
+    enemyShoot.play();
   })
 }
 
@@ -380,6 +396,7 @@ function checkDeath(){
   clearInterval(interval);
   interval = undefined;
   board.gameOver();
+  deathSound.play();
 }
 
 function checkWin(){
@@ -387,6 +404,7 @@ function checkWin(){
   clearInterval(interval);
   interval = undefined;
   board.win();
+  winSound.play();
   }
 }
 
@@ -453,6 +471,7 @@ addEventListener('keydown', function(e){
     case 13:
       if(mario.bullets.length === 3)return;
       generateMyBullets();
+      shootSound.play();
       break;
     case 27:
       restart();
@@ -481,6 +500,7 @@ addEventListener('keydown', function(e){
     case 70:
       if(luigi.bullets.length === 3)return;
       generateLuigiBullets();
+      shootSound.play();
       break;
     }
   })
