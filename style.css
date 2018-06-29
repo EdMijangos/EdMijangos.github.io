@@ -1,3 +1,8 @@
+@font-face{
+  font-family: 'Arcade';
+  src: url(Font/arcadeclassic.regular.ttf);
+}
+
 body{
   margin:0;
   padding:0;
@@ -5,11 +10,22 @@ body{
   background-size: cover;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; 
+  font-family: Arcade;
+  font-size: 1.5em;
 }
 
 h1{
   color:white
+}
+
+#buttons{
+  display: flex;
+  flex-direction: row;
+}
+
+#logo{
+  margin-top: 7vh;
 }
 
 .btn{
@@ -20,7 +36,6 @@ h1{
   padding-top:35px;
   flex:1;
   text-align: center;
-  font-size: 1.5em;
 }
 
 .player1{
@@ -31,11 +46,26 @@ h1{
   background-color: green;
 }
 
+.player1:hover{
+  cursor: pointer;
+  background-color: darkred;
+}
+
+.player2:hover{
+  cursor: pointer;
+  background-color: darkgreen;
+}
+
 #player1instr{
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 8vw;
+}
+
+.player1:hover{
+  cursor: pointer;
+  background-color: darkred;
 }
 
 #player2instr{
@@ -52,4 +82,5 @@ h1{
 
 canvas{
   display:none;
+  margin-top: 5vh;
 }
